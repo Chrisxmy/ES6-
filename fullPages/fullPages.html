@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Document</title>
+	<style>
+	body{
+		margin: 0;
+		color:#000
+	}
+	.page{ height:100vh;}
+	 section{ height:100vh; display: flex; justify-content: center; align-items: center; font-size: 20vh;}
+	 section:nth-child(1){ background: #F1AF22; }
+     section:nth-child(2){ background: #356ADA; }
+     section:nth-child(3){ background: #D82220; }
+     section:nth-child(4){ background: #08AA37; }
+	
+	</style>
+</head>
+<body>
+	<div class='page'>
+		<section>
+			<div class='num'>1</div>
+		</section>
+		<section>
+			<div class='num'>2</div>
+		</section>
+		<section>
+			<div class='num'>3</div>
+		</section>
+		<section>
+			<div class='num'>4</div>
+		</section>
+	</div>
+  <script src="../dom库/index.js"></script>
+  <script src="./fullPages.js"></script>
+  <script>
+       new FullPage({
+      element: document.querySelector('body > .page'),duration: '1s',
+    })
+  
+  </script>
+</body>
+</html>
