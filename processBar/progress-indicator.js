@@ -1,3 +1,8 @@
+(function() {
+    var root = (typeof self == 'object' && self.self == self && self) ||
+        (typeof global == 'object' && global.global == global && global) ||
+        this || {};
+
 class ProgressIndicator {
     constructor(options) {
         let defalutOptions = {
@@ -87,3 +92,14 @@ class ProgressIndicator {
     }
 
 }
+
+   if (typeof exports != 'undefined' && !exports.nodeType) {
+        if (typeof module != 'undefined' && !module.nodeType && module.exports) {
+            exports = module.exports = ProgressIndicator;
+        }
+        exports.ProgressIndicator = ProgressIndicator;
+    } else {
+        root.ProgressIndicator = ProgressIndicator;
+    }
+
+})()
