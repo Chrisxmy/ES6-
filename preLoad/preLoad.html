@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0
+        }
+        body{
+            background: rgba(0,0,0,.2)
+        }
+        #container{
+            text-align: center
+        }
+        #progress {
+            margin-top: 30%;
+            height: 10px;
+            background: red;
+            width:0
+        }
+    </style>
+</head>
+
+<body>
+    <div id='container'>
+      <div id='progress'></div>
+      <span id='percent'></span>
+    </div>
+    
+    <script src='./preLoad.js'></script>
+    <script>
+        var pics = [
+            "https://raw.githubusercontent.com/mqyqingfeng/Preload/master/docs/img/1.jpeg",
+            "https://raw.githubusercontent.com/mqyqingfeng/Preload/master/docs/img/2.jpeg",
+            "https://raw.githubusercontent.com/mqyqingfeng/Preload/master/docs/img/3.jpeg",
+            "https://raw.githubusercontent.com/mqyqingfeng/Preload/master/docs/img/4.jpeg",
+            "https://raw.githubusercontent.com/mqyqingfeng/Preload/master/docs/img/5.jpeg",
+            "https://raw.githubusercontent.com/mqyqingfeng/Preload/master/docs/img/6.jpeg",
+            "https://raw.githubusercontent.com/mqyqingfeng/Preload/master/docs/img/7.jpeg",
+            "https://raw.githubusercontent.com/mqyqingfeng/Preload/master/docs/img/8.jpeg",
+        ]
+
+        new PreLoad({
+            pics: pics,
+            progress: function (index, total) {
+                var progress = document.getElementById('progress')
+                var percent = document.getElementById('percent')
+                var per = Math.floor(index / total * 100) + '%'
+                percent.innerHTML = per
+                progress.style.width = per
+            },
+            complete: function (successNum, failNum) {
+                console.log(successNum,failNum)
+                setTimeout(() => {
+                  var container = document.getElementById('container')
+                  container.style.display = 'none'
+                },500)
+                
+            }
+        })
+
+    </script>
+
+
+</body>
+
+</html>
