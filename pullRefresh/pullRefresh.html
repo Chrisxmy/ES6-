@@ -6,7 +6,7 @@
     <title>下拉刷新</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
         }
@@ -14,12 +14,42 @@
 </head>
 
 <body>
-    
+    <div id='wrap'></div>
+
     <script src="./pullRefresh.js"></script>
     <script>
-    var pull = new pullRefresh({
-       target: 'body'
-    })
+        var pull = new pullRefresh({
+            target: 'body',
+            // 下拉时的文字
+            pullText: "下拉以刷新页面",
+            // 下拉时的图标
+            pullIcon: "&#8675;",
+            // 释放前的文字
+            relaseText: "释放以刷新页面",
+            // 释放后的文字
+            refreshText: "刷新",
+            // 释放后的图标
+            refreshIcon: "&hellip;",
+            // 当大于 60px 的时候才会触发 relase 事件
+            threshold: 60,
+            // 最大可以拉到 80px 的高度
+            max: 80,
+            // 释放后，高度回到 50px
+            reloadHeight: 50,
+            refreshStart: function () {
+                console.log('start')
+            },
+            refreshed: function (reset) {
+                console.log('end')
+                setTimeout(function () {
+                    var p = document.createElement("p");
+                    p.innerHTML = "Lorem ipsum dolor sit attd est laborum.";
+                    document.getElementById("wrap").appendChild(p);
+                    reset()
+                }, 800)
+
+            }
+        })
     </script>
 </body>
 
